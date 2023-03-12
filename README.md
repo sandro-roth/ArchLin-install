@@ -9,7 +9,9 @@ The isofile can be downloaded from the [here](https://archlinux.org/download/ "h
 
 ## 1.2 Install the file on the stick (max os)
 - Open terminal
-''' diskutil list '''
+- '''
+diskutil list
+'''
 - Check for your USB device (Storagesize) X replaces the number of USB stick
 ''' diskutil unmountDisk /dev/diskX
 
