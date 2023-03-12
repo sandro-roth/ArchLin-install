@@ -129,6 +129,30 @@ The following describes on how to do a clean installation with SWAP partition
 
 - Network configuration (Name = archlin)
   - ``` echo archlin > /etc/hostname ```
-  - ``` nano /etc/hosts 
-           127.0.0.1 ```
+  - ``` nano /etc/hosts ```
+    - ``` 127.0.0.1 localhost ```
+    - ``` ::1       localhost ```
+    - ``` 127.0.1.1 archlin ```
+  
+  - Install Networkmanager and enable
+    - ``` pacman -S networkmanager ```
+    - ``` systemctl enable NetworkManager ```
+ 
+- Set password
+  - ``` passwd ```
+
+- Install bootloader grub
+  - ``` pacman -S grub efibootmgr ```
+  - ``` grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot --removable ```
+  - ``` grub-mkconfig -o /boot/grub/grub.cfg ```
+  - ``` exit ```
+ 
+- make sure swiss keyboard stays permanent
+  - ``` nano /etc/vconsole.conf ```
+  - ``` KEYMAP=de_CH-lantin1 ```
+
+## 2.7 Reboot
+- ``` shutdown now ```
+- remove the stick and start the pc again
+
   
