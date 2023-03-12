@@ -20,13 +20,27 @@ The isofile can be downloaded from the [here](https://archlinux.org/download/ "h
 # 2 Install Arch linux on target machine
 The following describes on how to do a clean installation with SWAP partition
 
-## 2.1 Change Keyboar layout (not permanent)
+## 2.1 Start installation
 - Insert the USB stick and boot hodling F2
 - Iniside BIOS change booting from x to USB
 - Reboot
 - Click on install Linux
 - A virtual user is created and access to terminal is given
+
+## 2.1 Change Keyboar layout (not permanent)
 - Change the Keyboard
   - ``` loadkeys de_CH-latin1 ```
+
 - Verify bootmode actualy UEFI (if something is shown = verified)
   - ``` ls /sys/firmware/efi/efivars ```
+
+## 2.2 Connect to wifi
+- ``` iwctl ```
+  - ``` device list ```
+  - ``` station wlan0 scan ```
+  - ``` station wlan0 get-networks ```
+  - ``` station wlan0 connect MyWlan ```
+  - ``` exit ```
+
+- check connection
+  - ``` ping -c 3 google.com ```
