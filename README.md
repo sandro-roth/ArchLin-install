@@ -46,9 +46,26 @@ The following describes on how to do a clean installation with SWAP partition
   - ``` ping -c 3 google.com ```
 
 ## 2.3 Update system clock
-- ``` timedatectl ```
+- check the status of the current time
+  - ``` timedatectl ```
+- change timezone
+  - ``` ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime ```
+- reset hardwareclock
+  - ``` hwclock --systohc --utc
 - If date is not shown correctly enable timesync at startup
-- ``` systemctl start systemd-timesyncd.service
+  - ``` timedatectl status ```
+  - ``` systemctl start systemd-timesyncd.service ```
+
 
 ## 2.4 Partition the disk
+- show all the disks
+  - ``` fdisk -l ```
+- access the disk where to OS should run on (nvme0n1)
+  - ``` cfdisk /dev/nvme0n1 ```
+- change the table to the following 
+  Partition     | Type          | Size
+  ------------- | ------------- | -------------
+  EFI boot      | EFI system    | 1GB
+  SWAP          | Linux Swap    | ~ 16GB
+  Free space    | Linux file    | rest
 
