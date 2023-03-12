@@ -85,10 +85,24 @@ The following describes on how to do a clean installation with SWAP partition
     ``` fdisk -l ```
   
   - For EFI System
-    - ``` mkfs.fat -F 32 /dev/efi_system_partition ```
+    - ``` mkfs.fat -F 32 /dev/nvme0n1p1 ```
 
   - For SWAP
-    - ``` mkswap /dev/swap_partition ```
+    - ``` mkswap /dev/nvme0n1p2 ```
     
-  - For Free space
-    - ``` mkfs.ext4 /dev/root_partition ```
+  - For Free space (root partition)
+    - ``` mkfs.ext4 /dev/nvme0n1p3 ```
+
+- mount the file systems (boot and swap)
+  - ``` mount /dev/nvme0n1p3 /mnt ```
+  - ``` mkdir /mnt/boot ```
+  - ``` mount /dev/nvme0n1p1 /mnt/boot ```
+
+  - enable swap partition
+    - ``` swapon /dev/nvme0n1p2 ```
+  
+  - check if mounted correctly
+    - ``` lsblk ```
+
+  ** 2.5 Installation
+  
