@@ -14,4 +14,5 @@ The isofile can be downloaded from the [here](https://archlinux.org/download/ "h
 - Check for your USB device (Storagesize) X replaces the number of USB stick
   - ``` diskutil unmountDisk /dev/diskX ```
 
-
+- Copy the Iso file to the USB stick
+  - ``` dd if=path/to/archlinux-version-x86_64.iso of=/dev/rdiskX bs=1m ``` 
