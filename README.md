@@ -104,5 +104,5 @@ The following describes on how to do a clean installation with SWAP partition
   - check if mounted correctly
     - ``` lsblk ```
 
-  ** 2.5 Installation
+## 2.5 Installation
   
