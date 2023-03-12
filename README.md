@@ -22,9 +22,13 @@ The following describes on how to do a clean installation with SWAP partition
 
 ## 2.1 Start installation
 - Insert the USB stick and boot hodling F2
+
 - Iniside BIOS change booting from x to USB
+
 - Reboot
+
 - Click on install Linux
+
 - A virtual user is created and access to terminal is given
 
 ## 2.1 Change Keyboar layout (not permanent)
@@ -48,10 +52,13 @@ The following describes on how to do a clean installation with SWAP partition
 ## 2.3 Update system clock
 - check the status of the current time
   - ``` timedatectl ```
+
 - change timezone
   - ``` ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime ```
+
 - reset hardwareclock
   - ``` hwclock --systohc --utc
+
 - If date is not shown correctly enable timesync at startup
   - ``` timedatectl status ```
   - ``` systemctl start systemd-timesyncd.service ```
@@ -60,12 +67,14 @@ The following describes on how to do a clean installation with SWAP partition
 ## 2.4 Partition the disk
 - show all the disks
   - ``` fdisk -l ```
+
 - access the disk where to OS should run on (nvme0n1)
   - ``` cfdisk /dev/nvme0n1 ```
+
 - change the table to the following 
-  Partition     | Type          | Size
-  ------------- | ------------- | -------------
-  EFI boot      | EFI system    | 1GB
-  SWAP          | Linux Swap    | ~ 16GB
-  Free space    | Linux file    | rest
+    Partition     | Type          | Size
+    ------------- | ------------- | -------------
+    EFI boot      | EFI system    | 1GB
+    SWAP          | Linux Swap    | ~ 16GB
+    Free space    | Linux file    | rest
 
