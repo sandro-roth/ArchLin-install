@@ -150,6 +150,7 @@ The following describes on how to do a clean installation with SWAP partition
 - make sure swiss keyboard stays permanent
   - ``` nano /etc/vconsole.conf ```
   - ``` KEYMAP=de_CH-lantin1 ```
+  - ``` localectl set-keymap --no-convert de_CH-lantin1 ```
 
 ## 2.7 Reboot
 - ``` shutdown now ```
