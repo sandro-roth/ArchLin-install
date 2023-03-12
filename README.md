@@ -52,13 +52,7 @@ The following describes on how to do a clean installation with SWAP partition
 ## 2.3 Update system clock
 - check the status of the current time
   - ``` timedatectl ```
-
-- change timezone
-  - ``` ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime ```
-
-- reset hardwareclock
-  - ``` hwclock --systohc --utc ```
-
+  
 - If date is not shown correctly enable timesync at startup
   - ``` timedatectl status ```
   - ``` systemctl start systemd-timesyncd.service ```
@@ -105,4 +99,36 @@ The following describes on how to do a clean installation with SWAP partition
     - ``` lsblk ```
 
 ## 2.5 Installation
+- Install basic necessories for linux
+  - ``` pacstrap -i /mnt base linux linux-firmware sudo nano ```
+  - If this command is failing keyrings have to be updated by
+    - ``` pacman -Sy --needed archlinux-keyring ```
+  - run first command again
+
+## 2.6 Configure the system
+- Generate fstab file
+  - ``` genfstab -U -p /mnt >> /mnt/etc/fstab ```
+  - ``` cat /mnt/etc/fstab ```
+
+- Change root into the new system
+  - ```  arch-chroot /mnt /bin/bash ```
+
+- Set locals
+  - ``` nano /etc/locale.gen ```
+  - ``` Search for es_US.., de_CH..., de_DE... (ctrl+W) and uncoment these. Save / Exit (Ctrl + O / Ctrl + x) ```
+  
+  - generate the locales
+    - ``` locale-gen ```
+    
+  - add the locale to the config file
+    - ``` echo "LANG=en_US.UTF-8" > /etc/locale.conf ```
+    
+- Set timezone and reset hwclock
+  - ``` ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime ```
+  - ``` hwclock --systohc --utc ```
+
+- Network configuration (Name = archlin)
+  - ``` echo archlin > /etc/hostname ```
+  - ``` nano /etc/hosts 
+           127.0.0.1 ```
   
