@@ -11,8 +11,8 @@ The isofile can be downloaded from the [here](https://archlinux.org/download/ "h
 - Open terminal
 - ```
 diskutil list
-```
+
 - Check for your USB device (Storagesize) X replaces the number of USB stick
-''' diskutil unmountDisk /dev/diskX
+``` diskutil unmountDisk /dev/diskX ```
 
 
