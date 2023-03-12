@@ -44,3 +44,11 @@ The following describes on how to do a clean installation with SWAP partition
 
 - check connection
   - ``` ping -c 3 google.com ```
+
+## 2.3 Update system clock
+- ``` timedatectl ```
+- If date is not shown correctly enable timesync at startup
+- ``` systemctl start systemd-timesyncd.service
+
+## 2.4 Partition the disk
+
