@@ -57,7 +57,7 @@ The following describes on how to do a clean installation with SWAP partition
   - ``` ln -sf /usr/share/zoneinfo/Europe/Zurich /etc/localtime ```
 
 - reset hardwareclock
-  - ``` hwclock --systohc --utc
+  - ``` hwclock --systohc --utc ```
 
 - If date is not shown correctly enable timesync at startup
   - ``` timedatectl status ```
@@ -72,9 +72,23 @@ The following describes on how to do a clean installation with SWAP partition
   - ``` cfdisk /dev/nvme0n1 ```
 
 - change the table to the following 
-    Partition     | Type          | Size
-    ------------- | ------------- | -------------
-    EFI boot      | EFI system    | 1GB
-    SWAP          | Linux Swap    | ~ 16GB
-    Free space    | Linux file    | rest
+    Partition     | Type          | Size          | Name
+    ------------- | ------------- | ------------- | -------------
+    EFI System    | EFI system    | 1G            | nvme0n1p1
+    SWAP          | Linux Swap    | ~ 16G         | nvme0n1p2
+    Free space    | Linux file    | rest          | nvme0n1p3
 
+- Agree with the option Write and afterwards quit the partition menue
+
+- Format the partitions
+  - show the partitions names by:
+    ``` fdisk -l ```
+  
+  - For EFI System
+    - ``` mkfs.fat -F 32 /dev/efi_system_partition ```
+
+  - For SWAP
+    - ``` mkswap /dev/swap_partition ```
+    
+  - For Free space
+    - ``` mkfs.ext4 /dev/root_partition ```
